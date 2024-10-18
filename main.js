@@ -21,9 +21,9 @@ const camera = new THREE.PerspectiveCamera(
     0.1,
     500
 );
-camera.position.x = 0;
-camera.position.y = 0;
-camera.position.z = 10;
+camera.position.x = 8;
+camera.position.y = 4;
+camera.position.z = 20;
 scene.add(camera);
 
 // Add AxesHelper to show the 3D axes (X: red, Y: green, Z: blue)
@@ -115,11 +115,14 @@ window.addEventListener("resize", () => {
 });
 
 let isZooming;
+window.gl_animation = false;
 window.addEventListener("keypress", function (key) {
     if (key.key === "p") {
-        camera.position.set(8, 4, 15);
+        camera.position.set(8, 4, 20);
         clearInterval(isZooming);
         document.getElementById("redOverlay").style.opacity = 0;
+        window.gl_animation = false;
+
     } else if (key.key === "Enter") {
         const startPos = camera.position;
         const endPos = { x: 0, y: 3, z: 20 };
@@ -165,6 +168,7 @@ window.addEventListener("keypress", function (key) {
                     requestAnimationFrame(animateZoom);
                 } else {
                     document.getElementById("redOverlay").style.opacity = 1;
+                    window.gl_animation = true;
                 }
             }
 
