@@ -17,12 +17,23 @@
             canvas {
                 display: block;
             }
+            #redOverlay {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: red; /* Color of the overlay */
+                opacity: 0; /* Initially hidden */
+                transition: opacity 0.5s; /* Smooth transition */
+                pointer-events: none; /* Allow clicks through */
+            }
         </style>
-      <script type="module" crossorigin src="/assets/index-NjFisB_6.js"></script>
+      <script type="module" crossorigin src="/assets/index-jE0q9BvV.js"></script>
       <link rel="stylesheet" crossorigin href="/assets/index-6sm7LNB5.css">
     </head>
     <body>
-        <canvas class="webgl"></canvas>
+        <canvas id="model" class="webgl"></canvas>
 
         <div id="redOverlay">
             <canvas id="glcanvas"></canvas>
@@ -40,13 +51,23 @@
                 uniform float u_time;
                 uniform vec2 u_resolution;
 
-                vec3 palette( float t ) {
-                    vec3 a = vec3(0.5, 0.5, 0.5);
-                    vec3 b = vec3(0.5, 0.5, 0.5);
-                    vec3 c = vec3(1.0, 1.0, 1.0);
-                    vec3 d = vec3(0.25,0.4,0.0);
+                vec3 palette(float t) {
+                    // Ensure t is in the range [0.0, 1.0]
+                    t = mod(t, 1.0);
 
-                    return a + b*cos( 6.28318*(c*t+d) );
+                    vec3 color1 = vec3(0.0, 0.0, 1.0); // Blue
+                    vec3 color2 = vec3(0.5, 0.0, 1.0); // Purple
+                    vec3 color3 = vec3(0.90, 0.1, 0.9); // Pink
+                    vec3 color4 = vec3(1.0, 0.0, 0.0);  // Red
+
+                    // Define the transitions
+                    if (t < 0.33) {
+                        return mix(color1, color2, t * 3.0); // Blue to purple
+                    } else if (t < 0.66) {
+                        return mix(color2, color3, (t - 0.33) * 3.0); // Purple to pink
+                    } else {
+                        return mix(color3, color4, (t - 0.66) * 3.0); // Pink to red
+                    }
                 }
                 float oscillate(float time, float minVal, float maxVal) {
                     float sineWave = sin(time);
@@ -158,6 +179,5 @@
         <div id="loader">
             <h1>Loading</h1>
         </div>
-
     </body>
 </html>
