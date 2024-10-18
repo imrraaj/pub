@@ -51,25 +51,20 @@
 
                 vec3 palette(float t) {
                     // Ensure t is in the range [0.0, 1.0]
-                    t = mod(t, 1.0); 
-            
-                    vec3 color1 = vec3(0.0, 0.94, 1.0); // #00eaff (blue)
-                    vec3 color2 = vec3(0.0, 0.5, 1.0);  // #0080ff
-                    vec3 color3 = vec3(0.5, 0.0, 1.0);  // #8000ff (purple)
-                    vec3 color4 = vec3(0.90, 0.1, 0.9); // #e619e6 (pink)
-                    vec3 color5 = vec3(1.0, 0.0, 0.0);  // #f00 (red)
-            
+                    t = mod(t, 1.0);
+
+                    vec3 color1 = vec3(0.0, 0.0, 1.0); // Blue
+                    vec3 color2 = vec3(0.5, 0.0, 1.0); // Purple
+                    vec3 color3 = vec3(0.90, 0.1, 0.9); // Pink
+                    vec3 color4 = vec3(1.0, 0.0, 0.0);  // Red
+
                     // Define the transitions
-                    if (t < 0.2) {
-                        return mix(color1, color2, t * 5.0); // Blue to light blue
-                    } else if (t < 0.4) {
-                        return mix(color2, color3, (t - 0.2) * 5.0); // Light blue to purple
-                    } else if (t < 0.6) {
-                        return mix(color3, color4, (t - 0.4) * 5.0); // Purple to pink
-                    } else if (t < 0.8) {
-                        return mix(color4, color5, (t - 0.6) * 5.0); // Pink to red
+                    if (t < 0.33) {
+                        return mix(color1, color2, t * 3.0); // Blue to purple
+                    } else if (t < 0.66) {
+                        return mix(color2, color3, (t - 0.33) * 3.0); // Purple to pink
                     } else {
-                        return mix(color5, color1, (t - 0.8) * 5.0); // Red back to blue
+                        return mix(color3, color4, (t - 0.66) * 3.0); // Pink to red
                     }
                 }
                 float oscillate(float time, float minVal, float maxVal) {
