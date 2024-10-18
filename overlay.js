@@ -78,6 +78,8 @@ function render(time) {
         gl.uniform1f(timeLocation, elapsedTime); // Pass elapsed time to the shader.
         gl.clear(gl.COLOR_BUFFER_BIT);
         gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
+    }else {
+      startTime = null;
     }
     requestAnimationFrame(render);
 }
