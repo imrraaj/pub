@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+		<style>
+			* {
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+  }
+  
+  html {
+	scroll-behavior: smooth;
+	scroll-snap-type: y mandatory;
+  }
+  
+  body {
+	overflow-x: hidden;
+	background-color: #FF608C;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: start;
+	transition: all 0.7s  ease;
+	padding: 0 15px;
+  }
+  
+  header {
+	position: fixed;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 20px 15px;
+	top: 0;
+	width: 100%;
+  }
+  
+  #logo {
+	width: 240px;
+  }
+  
+  #email {
+	font-size: 18px;
+	font-weight: 600;
+	color: black;
+	text-decoration: none;
+  }
+  
+  #paraHolder {
+	position: fixed;
+	bottom: 40px;
+	width: 30%;
+	left: 15px;
+  }
+  
+  #aboutText {
+	font-size: 20px;
+	margin-bottom: 20px;
+	width: 300px;
+	font-weight: bold;
+  }
+  
+  #copyright {
+	font-size: 13px;
+	margin-bottom: 30px;
+  }
+  
+  #copyright a {
+	color: black;
+  }
+  #copyright a:hover {
+	text-decoration: none;
+  }
+  
+  #emailEnd {
+	display: none;
+	position: absolute;
+	top: 5580px;
+	right: 15px;
+	font-size: 18px;
+	font-weight: 600;
+	color: black;
+	text-decoration: none;
+  }
+  
+  #emailEnd:hover {
+	text-decoration: underline;
+  }
+  
+  #policy {
+	margin-top: 20px;
+	font-size: 20px;
+	color: black;
+	cursor: pointer;
+  }
+  
+  #policy:hover {
+	text-decoration: none;
+  }
+  
+  #issuesItem {
+	position: fixed;
+	display: flex;
+	flex-direction: column;
+	align-items: start;
+	bottom: 40px;
+	width: 80px;
+	right: 0;
+	gap: 8px;
+  }
+  
+  #issuesItem a {
+	color: black;
+	font-size: 20px;
+	text-decoration: none;
+	border-bottom: 1px solid transparent;
+  }
+  #issuesItem a:checked {
+	font-weight: 700;
+  }
+  
+  #issuesItem a:hover {
+	border-bottom: 1px solid black;
+  }
+  
+  #itemContainer {
+	display: block;
+	margin-top: 40px;
+	margin-bottom: 10px;
+	width: 100%;
+  }
+  
+  .issue img {
+	width: 388px;
+  }
+  
+  .issue {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	height: 100vh;
+  }
+  .issue a {
+	color: white;
+	text-decoration: none;
+  }
+  .issue p:nth-child(3) {
+	margin-top: 20px;
+  }
+  .issue a:hover {
+	text-decoration: underline;
+  }
+  
+  .issue p:last-child {
+	font-size: 16px;
+	margin-top: 20px;
+	text-align: center;
+  }
+  
+  #issue6 p a {
+	color: #FF608C;
+  }
+  
+  #issue7 a {
+	color: blue;
+  }
+  
+  .issue p {
+	font-size: 20px;
+	font-weight: 600;
+  }
+  
+  @media (max-width: 1024px) {
+	#issuesItem {
+	  display: none;
+	}
+	header {
+	  position: absolute;
+	}
+	#email {
+	  display: none;
+	}
+	#emailEnd {
+	  display: block;
+	}
+  
+	#paraHolder {
+	  position: unset;
+	  display: flex;
+	  flex-direction: column;
+	  justify-content: center;
+	  align-items: start;
+	  padding: 0 15px 20px 15px;
+	}
+	#policy {
+	  margin-top: 0;
+	}
+  }
+  
+  @media screen and (max-width: 790px) {
+	#logo {
+	  width: 160px;
+	}
+	#paraHolder {
+	  justify-content: center;
+	  align-items: center;
+	  width: 100%;
+	}
+	#aboutText {
+	  width: 90%;
+	  text-align: center;
+	  margin-bottom: 10px;
+	}
+  
+	#emailEnd {
+	  position: unset;
+	  text-align: center;
+	  width: 100%;
+	}
+  }
+  
+  @media (max-width: 420px) {
+	.issue {
+	  margin-top: 0
+	}
+	.issue img {
+	  width: 360px;
+	}
+	.issue p, .issue a {
+	  font-size: 14px;
+	}
+  }
+  
+  @media (max-height: 420px) {
+	.issue img {
+	  width: 180px
+	}
+	#email {
+	  display: block;
+	  font-size: 14x;
+	  margin-right: 20px;
+	}
+	
+	.issue p, .issue p a {
+	  font-size: 14px;
+	}
+  }
+		</style>
+    </head>
+    <body>
+        <header>
+            <img
+                id="logo"
+                src="https://backstagetalks.com/img/logo.png"
+                alt="Name of website"
+            />
+            <a href="#" id="email">info@backstagetalks.com</a>
+        </header>
+        <div id="issuesItem">
+            <a class="bookmark" href="#issue7" data-color="#FF608C">Issue #7</a>
+            <a class="bookmark" href="#issue6" data-color="#FFFFFF">Issue #6</a>
+            <a class="bookmark" href="#issue5" data-color="#00C1B5">Issue #5</a>
+            <a class="bookmark" href="#issue4" data-color="#FF6519">Issue #4</a>
+            <a class="bookmark" href="#issue3" data-color="#FFBE00">Issue #3</a>
+            <a class="bookmark" href="#issue2" data-color="#1D3FBB">Issue #2</a>
+            <a class="bookmark" href="#issue1" data-color="#E30512">Issue #1</a>
+        </div>
+        <div id="itemContainer">
+            <div id="issue7" class="issue active" data-color="#FF608C">
+                <img
+                    src="https://backstagetalks.com/img/backstagetalks_cover_issue_7.png"
+                    alt="logo"
+                />
+                <p>Issue #7</p>
+                <p><a href="#">BUY HERE</a> (Europe)</p>
+                <p><a href="#">BUY HERE</a> (UK & Overseas)</p>
+                <p>or in <a href="#">selected stores</a></p>
+            </div>
+
+            <div id="issue6" class="issue" data-color="#FFFFFF">
+                <img
+                    src="https://backstagetalks.com/img/backstagetalks_cover_issue_6.png"
+                    alt=""
+                />
+                <p>Issue #6</p>
+                <p><a href="#">BUY HERE</a></p>
+                <p>or in <a href="#">selected stores</a></p>
+            </div>
+
+            <div id="issue5" class="issue" data-color="#00C1B5">
+                <img
+                    src="https://backstagetalks.com/img/backstagetalks_cover_issue_5.png"
+                    alt=""
+                />
+                <p>Issue #5</p>
+                <p><a href="#">BUY HERE</a></p>
+                <p>or in <a href="#">selected stores</a></p>
+            </div>
+            <div id="issue4" class="issue" data-color="#FF6519">
+                <img
+                    src="https://backstagetalks.com/img/backstagetalks_cover_issue_4.png"
+                    alt=""
+                />
+                <p>Issue #4 is sold out</p>
+
+                <p>
+                    If you are lucky, you may get the last pieces in
+                    <a href="#">selected stores</a>
+                </p>
+            </div>
+            <div id="issue3" class="issue" data-color="#FFBE00">
+                <img
+                    src="https://backstagetalks.com/img/backstagetalks_cover_issue_3.png"
+                    alt=""
+                />
+                <p>Issue #3</p>
+                <p><a href="#">BUY HERE</a></p>
+
+                <p>or in <a href="#">selected stores</a></p>
+            </div>
+            <div id="issue2" class="issue" data-color="#1D3FBB">
+                <img
+                    src="https://backstagetalks.com/img/backstagetalks_cover2017.png"
+                    alt=""
+                />
+                <p>Issue #2</p>
+                <p><a href="#">BUY HERE</a></p>
+                <p>or in <a href="#">selected stores</a></p>
+            </div>
+            <div id="issue1" class="issue" data-color="#E30512">
+                <img
+                    src="https://backstagetalks.com/img/backstagetalks_cover2016_n.png"
+                    alt=""
+                />
+                <p>Issue #1 is sold out</p>
+                <p>
+                    If you are lucky, you may get the last pieces in
+                    <a href="#">selected stores</a>
+                </p>
+            </div>
+        </div>
+        <div id="paraHolder">
+            <p id="aboutText">
+                Backstage Talks is a magazine of casual, but in depth dialogues
+                on design and business. Our decisions shape and influence this
+                complex world—to have a chance to make the right ones, we need
+                to talk.
+            </p>
+            <p id="copyright">
+                © 2024 <a href="#" id="published">Published by Büro Milk</a>
+            </p>
+            <a href="#" id="policy">Privacy Policy</a>
+        </div>
+        <a href="#" id="emailEnd">info@backstagetalks.com</a>
+    </body>
+    <script>
+        let bookmarks = document.querySelectorAll(".bookmark");
+        let items = document.querySelectorAll(".issue");
+        let myBody = document.body;
+
+        for (let i = 0; i < bookmarks.length; i++) {
+            bookmarks[i].addEventListener("click", () => {
+                myBody.style.backgroundColor =
+                    bookmarks[i].getAttribute("data-color");
+            });
+        }
+
+        window.addEventListener("scroll", () => {
+            items.forEach((item) => {
+                let rect = item.getBoundingClientRect();
+                let isVisible =
+                    rect.top + (rect.top - 2 / 3) < window.innerHeight &&
+                    rect.bottom > 0;
+                if (isVisible) {
+                    myBody.style.backgroundColor =
+                        item.getAttribute("data-color");
+                }
+            });
+        });
+    </script>
+</html>
